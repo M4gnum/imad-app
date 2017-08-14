@@ -9,8 +9,55 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+var articles = {
+    articleOne: {
+        title: 'Article 1 | Start',
+        heading: 'Article 1',
+        date: '14 Aug 2017',
+        content: ` <p>This is article 1.
+    This is actually a html page not just a text msg.
+    </p>`
+    },
+    articleTwo: {},
+    articleThree: {}
+};
+
+function createTemplat(data)
+{
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+    var htmlTemplate = `
+        <!DOCTYPE html>
+          <head>
+              <title>
+                  ${title}
+              </title>
+              <meta name="viewport" content = "width-device-width, initial scale = 1 " />
+              <link href="/ui/style.css" rel="stylesheet" />
+          </head>
+          <body>
+              <div class="contains">
+              <div>
+                  <a href="/">Home</a>
+              </div>
+              <div>
+                ${heading}
+              </div>
+              <div>
+                ${date}
+              </div>
+                ${content}
+            </div>
+          </body>
+        </html>
+        `;
+        return htmlTemplate;
+}
+
 app.get('/article-one', function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+    res.send(articles.articleOne);
 });
 
 app.get('/article-two', function(req,res){
