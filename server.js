@@ -57,7 +57,7 @@ function createTemplat(data)
 }
 
 app.get('/article-one', function(req,res){
-    res.send(articles.articleOne);
+    res.send(createTepmlate(articles.articleOne));
 });
 
 app.get('/article-two', function(req,res){
