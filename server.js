@@ -51,7 +51,7 @@ function createTemplate(data)
               <div class="contains">
               <div>
                   <a href="/">Home</a>
-              </div>
+              </div><br>
               <div>
                 ${heading}
               </div>
