@@ -1,4 +1,4 @@
 console.log('Loaded!');
 
-var element = document.getById('new1');
+var element = document.getElementById('new1');
 element.innerHTML = 'New home page';
