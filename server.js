@@ -22,7 +22,7 @@ var articles = {
     articleThree: {}
 };
 
-function createTemplat(data)
+function createTemplate(data)
 {
     var title = data.title;
     var heading = data.heading;
@@ -57,7 +57,7 @@ function createTemplat(data)
 }
 
 app.get('/article-one', function(req,res){
-    res.send(createTepmlate(articles.articleOne));
+    res.send(createTemplate(articles.articleOne));
 });
 
 app.get('/article-two', function(req,res){
