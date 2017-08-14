@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 });
 
 var articles = {
-    articleOne: {
+    'article-one': {
         title: 'Article 1 | Start',
         heading: 'Article 1',
         date: '14 Aug 2017',
@@ -18,8 +18,18 @@ var articles = {
     This is actually a html page not just a text msg.
     </p>`
     },
-    articleTwo: {},
-    articleThree: {}
+    'article-two': {title: 'Article 2 | Testing',
+        heading: 'Article 2',
+        date: '14 Aug 2017',
+        content: ` <p>This is article 2.
+    I guess this works for now.
+    </p>`},
+    'article-three': {title: 'Article 3 | Ending',
+        heading: 'Article 3',
+        date: '14 Aug 2017',
+        content: ` <p>This is article 3.
+    This is the last one.This is enough.
+    </p>`}
 };
 
 function createTemplate(data)
@@ -56,16 +66,9 @@ function createTemplate(data)
         return htmlTemplate;
 }
 
-app.get('/article-one', function(req,res){
-    res.send(createTemplate(articles.articleOne));
-});
-
-app.get('/article-two', function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three', function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+app.get('/:articleName', function(req,res){
+    var articleName = req.params.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
