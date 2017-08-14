@@ -15,7 +15,7 @@ var articles = {
         heading: 'Article 1',
         date: '14 Aug 2017',
         content: ` <p>This is article 1.
-    This is actually a js page not just a text msg.
+    This is actually a js o/p not just a text msg.
     </p>`
     },
     'article-two': {title: 'Article 2 | Testing',
