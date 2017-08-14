@@ -20,3 +20,11 @@ body {
     height: 200px;
 }
 
+.contains{
+            color: #00acff;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            max-width: 500px;
+            font-size: large;
+      }
