@@ -5,5 +5,5 @@ element.innerHTML = 'New home page';
 
 var imgElement = document.getElementById('img1');
 imgElement.onClick = function() {
-    imgElement.style.margin = '100px';
+    imgElement.style.marginLeft = '100px';
 };
