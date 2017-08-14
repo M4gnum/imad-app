@@ -7,7 +7,7 @@ button.onclick = function(){
     //capture
     
     //render
-    counter++;
+    counter = counter + 1;
     var span = document.getElementById('count');
     span.innHTML = counter.toString();
 };
