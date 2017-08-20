@@ -17,29 +17,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-var articles = {
-    'article-one': {
-        title: 'Article 1 | Start',
-        heading: 'Article 1',
-        date: '14 Aug 2017',
-        content: ` <p>This is article 1.
-    This is actually a js o/p not just a text msg.
-    </p>`
-    },
-    'article-two': {title: 'Article 2 | Testing',
-        heading: 'Article 2',
-        date: '14 Aug 2017',
-        content: ` <p>This is article 2.
-    I guess this works for now.
-    </p>`},
-    'article-three': {title: 'Article 3 | Ending',
-        heading: 'Article 3',
-        date: '14 Aug 2017',
-        content: ` <p>This is article 3.
-    This is the last one.This is enough.
-    </p>`}
-};
-
 function createTemplate(data)
 {
     var title = data.title;
