@@ -65,7 +65,7 @@ app.get('/test-db', function(req, res){
         {
             res.send(JSON.stringify(result.rows));
         }
-    })
+    });
     //give a response
 });
 
@@ -92,6 +92,21 @@ function hash(input, salt)
 app.get('/hash/:input', function(req, res){
     var hashedString = hash(req.params.input, 'random-string');
     res.send(hashedString);
+});
+
+app.get('/create-user', function(req,res){
+    var salt = crypto.getRandomBytes(128).toString('hex');
+    var dbString = has(password, salt);
+    pool.query('INSERT INTO "user" (username, values) VALUES ($1, $2))', [username, dbString], function(err, result){
+        if(err)
+        {
+            res.status(500).send(err.toString());
+        }
+        else
+        {
+            res.send(JSON.stringify(result.rows));
+        }
+    });
 });
 
 app.get('/articles/:articleName', function(req, res){
