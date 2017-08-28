@@ -89,7 +89,7 @@ app.get('/submit-name/', function(req, res){
 function hash(input, salt)
 {
     var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
-    return ["pbkdf",salt,"10000", hashed.toString('hex')];
+    return ["pbkdf","10000",salt, hashed.toString('hex')];
 }
 
 app.get('/hash/:input', function(req, res){
@@ -129,9 +129,13 @@ app.post('/login', function(req, res){
         {
             if(result.rows.length === 0 )
             {
-                res.status(403).send('User not found');
+                res.status(403).send('Username/password is wrong');
             }
-            res.send('User successfully created : ' + username);
+            else
+            {
+                var dbString = result.rows[0].password;
+                res.send('User successfully created : ' + username);
+            }
         }
    });
 });
