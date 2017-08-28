@@ -4,6 +4,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 var Pool = require('pg').Pool;
+var crypto = require('crypto');
 
 var config = {
     user: 'sourabhsupnekar20',
@@ -82,6 +83,16 @@ app.get('/submit-name/', function(req, res){
     res.send(JSON.stringify(names));
 });
 
+function hash(input, salt)
+{
+    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
+    return(hashed.toString('hex'));
+}
+
+app.get('/hash/:input', function(req, res){
+    var hashedString - hash(req.params.input, 'random-string');
+    res.send(hashedString);
+});
 
 app.get('/articles/:articleName', function(req, res){
     pool.query("SELECT * FROM article where title = $1", [req.params.articleName], function(err, result){
