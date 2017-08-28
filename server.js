@@ -104,7 +104,7 @@ app.get('/create-user', function(req,res){
         }
         else
         {
-            res.send(JSON.stringify(result.rows));
+            res.send('User successfully created : ' + username);
         }
     });
 });
