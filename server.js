@@ -129,12 +129,21 @@ app.post('/login', function(req, res){
         {
             if(result.rows.length === 0 )
             {
-                res.status(403).send('Username/password is wrong');
+                
             }
             else
             {
                 var dbString = result.rows[0].password;
-                res.send('User successfully created : ' + username);
+                var salt = dbString.split('$')[2];
+                var hashedPassword = hash(password, salt);
+                if(hashedPassword === dbString)
+                {
+                    res.send('Credentials are correct');
+                }
+                else
+                {
+                    res.status(403).send('Username/password is wrong');
+                }
             }
         }
    });
