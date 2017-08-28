@@ -12,6 +12,7 @@ submit.onclick = function(){
         {
             if(request.status === 200)
             {
+               console.log('Logged in');
                alert('Logged in');
             }
             else if(request.status === 403)
