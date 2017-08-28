@@ -1,7 +1,7 @@
 
 //Login
 
-var submit = document.getElementById('b1');
+var submit = document.getElementById('submit_btn');
 
 submit.onclick = function(){
     //get request
