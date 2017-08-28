@@ -116,6 +116,26 @@ app.post('/create-user', function(req,res){
    });
 });
 
+app.post('/login', function(req, res){
+    var username = req.body.username;
+   var password = req.body.password;
+   
+   pool.query('Select* from "user" where username = $1', [username], function(err, result){
+        if(err)
+        {
+            res.status(500).send(err.toString());
+        }
+        else
+        {
+            if(result.rows.length === 0 )
+            {
+                res.status(403).send('User not found');
+            }
+            res.send('User successfully created : ' + username);
+        }
+   });
+});
+
 app.get('/articles/:articleName', function(req, res){
     pool.query("SELECT * FROM article where title = $1", [req.params.articleName], function(err, result){
         if(err)
