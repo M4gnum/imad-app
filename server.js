@@ -116,7 +116,6 @@ app.post('/Create-User', function(req,res){
         }
         else
         {
-            res.stats(202);
             res.send('User successfully created : ' + username);
         }
    });
@@ -145,7 +144,6 @@ app.post('/Login', function(req, res){
                 if(hashedPassword === dbString)
                 {
                     req.session.auth = {userId: result.rows[0].id};
-                    res.stats(202);
                     res.send('Credentials are correct');
                 }
                 else
