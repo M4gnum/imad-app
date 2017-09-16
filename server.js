@@ -102,7 +102,7 @@ app.get('/hash/:input', function(req, res){
     res.send(hashedString);
 });
 
-app.post('/create-user', function(req,res){
+app.post('/Create-User', function(req,res){
     //username, password
    var username = req.body.username;
    var password = req.body.password;
@@ -121,7 +121,7 @@ app.post('/create-user', function(req,res){
    });
 });
 
-app.post('/login', function(req, res){
+app.post('/Login', function(req, res){
     var username = req.body.username;
    var password = req.body.password;
    
